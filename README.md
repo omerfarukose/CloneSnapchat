@@ -1,5 +1,4 @@
-# CloneSnapchat
-
+# Snapchat clone with Firebase
 
 ## Screenshots
 <img width="892" alt="1"  src="https://user-images.githubusercontent.com/57189131/146382508-e4b2dc21-5fe2-4a6c-a31f-c9019cdca95f.png">
