@@ -9,21 +9,23 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var bitmoImage: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationItem.title = "Profil"
+        usernameLabel.text = UserModel.sharedInstance.username
+        scoreLabel.text = String(UserModel.sharedInstance.score)
+    }
+
+    @IBAction func friendsButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "toFriendsVC", sender: nil)
+    }
+    @IBAction func invitesButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "toInvitesVC", sender: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

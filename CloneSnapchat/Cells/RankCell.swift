@@ -9,6 +9,12 @@ import UIKit
 
 class RankCell: UITableViewCell {
 
+    @IBOutlet weak var userIndexLabel: UILabel!
+    @IBOutlet weak var userBitmoImage: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var userScoreLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

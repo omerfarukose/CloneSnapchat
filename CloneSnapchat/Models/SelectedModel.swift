@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import UIKit
+
+class SelectedModel {
+    
+    static let sharedInstance = SelectedModel()
+    
+    var selectedFriends = [String]()
+    
+  init(){}
+    
+}

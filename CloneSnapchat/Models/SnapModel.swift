@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import UIKit
+
+struct SnapModel {
+    
+    static let sharedInstance = SnapModel()
+    
+    var senderName = ""
+    var snapLinkArray = [String]()
+    
+  init(){}
+    
+}
+

@@ -8,7 +8,13 @@
 import UIKit
 
 class SnapCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var senderNameLabel: UILabel!
+    @IBOutlet weak var openImage: UIImageView!
+    @IBOutlet weak var bitmoImage: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

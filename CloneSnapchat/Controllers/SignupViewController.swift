@@ -5,6 +5,8 @@
 //  Created by Ömer Faruk KÖSE on 14.12.2021.
 //
 
+// signup işleminden sonra home screene yönlendir
+
 import UIKit
 import Firebase
 
@@ -21,7 +23,6 @@ class SignupViewController: UIViewController {
     var usernameArray = [String]()
     var emailArray = [String]()
     
-    // email&username bos mu
     var isEmailEmpty = true
     var isUsernameEmpty = true
     
@@ -72,7 +73,6 @@ class SignupViewController: UIViewController {
     
     //  email, kayitli mail listesinde var mi kontrolu
     @objc func emailCheck(){
-        print("mail kontrol")
         if let email = emailTextField.text {
             if isValidEmail(emailTextField.text!){ //regexe uyuyorsa maillerle kontrol et
                 for emailInArray in emailArray {
@@ -107,11 +107,9 @@ class SignupViewController: UIViewController {
     
     // username, kayitli username listesinde var mi kontrolu
     @objc func usernameCheck(){
-        print("username kontrol")
         if let username = usernameTextField.text {
             for usernameInArray in usernameArray {
                 if username == usernameInArray {
-                    print("username eşleşti")
                     usernameTextField.layer.borderWidth = 2
                     usernameTextField.layer.masksToBounds = true
                     usernameTextField.layer.cornerRadius = 6
@@ -119,7 +117,6 @@ class SignupViewController: UIViewController {
                     isUsernameEmpty = false
                     break
                 } else {
-                    print("username eşleşmedi")
                     usernameTextField.layer.borderWidth = 0
                     isUsernameEmpty = true
                 }
@@ -128,14 +125,6 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func signupButtonClicked(_ sender: Any) {
-        
-        print("username : \(usernameTextField.text)")
-        print("Email  : \(emailTextField.text)")
-        print("username aray : \(usernameArray)")
-        print("email array : \(emailArray)")
-        print("isusername : \(isUsernameEmpty)")
-        print("isEmailEmpty : \(isEmailEmpty)")
-        
         if usernameTextField.text != "" && emailTextField.text != "" && passwordTextField.text != "" {
             if (isUsernameEmpty){
                 if(isValidEmail(emailTextField.text!)){
@@ -170,19 +159,3 @@ class SignupViewController: UIViewController {
     
 }
 
-/*
- Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
-     if error != nil {
-         self.MakeAlert(title: "Error !", message: error?.localizedDescription ?? "Create user error !")
-     } else {
-         self.fireStore.collection("userInfo").addDocument(data: ["email": self.emailTextField.text! , "username": self.usernameTextField.text! , "score" : 0 , "friends": [] , "invites" : [] ]) { error in
-             if error != nil {
-                 self.MakeAlert(title: "Error", message: error?.localizedDescription ?? "Sign up firestore add document error !")
-             } else {
-                 self.MakeAlert(title: "", message: "Kullanıcı oluşturuldu")
-             }
-         }
-         self.fireStore.collection("snaps").addDocument(data: ["snapList":[],"username":self.usernameTextField.text!])
-     }
- }
- */

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UIViewController {
 
@@ -16,14 +17,21 @@ class SettingsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func logoutButtonClicked(_ sender: Any) {
+        do{
+            try Auth.auth().signOut()
+            UserModel.sharedInstance.email = ""
+            UserModel.sharedInstance.username = ""
+            UserModel.sharedInstance.score = 0
+            UserModel.sharedInstance.inviteFriends.removeAll()
+            UserModel.sharedInstance.friendsArray.removeAll()
+            UserModel.sharedInstance.snaps.removeAll()
+            SelectedModel.sharedInstance.selectedFriends.removeAll()
+            performSegue(withIdentifier: "toLoginVC", sender: nil)
+        }catch{
+            MakeAlert(title: "Error !", message: "Çıkış yapamadık hacı !")
+        }
     }
-    */
+    
 
 }
